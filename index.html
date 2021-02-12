@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" href="style/stylesheets.css" />
+  <title>SNEAK</title>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="navbar py-2 flex justify-content-center">
+        <nav class="py-2 navbar__nav flex justify-content-between align-items-center">
+          <p class="navbar__logo"><img src="./logo.png" alt="SNEAK"></p>
+          <ul class="navbar__ul main-menu">
+            <li class="navbar__ul--li"><a class="navbar__ul--active" href="#">All</a></li>
+            <li class="navbar__ul--li"><a href="#">Branding</a></li>
+            <li class="navbar__ul--li"><a href="#">Web</a></li>
+            <li class="navbar__ul--li"><a href="#">Photography</a></li>
+            <li class="navbar__ul--li"><a href="#">App</a></li>
+            <li class="navbar__ul--li"><i class="fas fa-search navbar__ul--search pointer"></i></li>
+          </ul>
+          <div class="movil-menu ">
+            <div class="toggle pointer color-primary">
+              <i class="fas fa-bars"></i>
+            </div>
+            <ul class="toggle-menu">
+              <li class="item"><a href="#">All</a></li>
+              <li class="item"><a href="#">Branding</a></li>
+              <li class="item"><a href="#">Web</a></li>
+              <li class="item"><a href="#">Photography</a></li>
+              <li class="item"><a href="#">App</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <section class="slider flex justify-content-center align-items-center">
+        <div class="slider__info flex flex-column justify-content-center align-items-center text-center">
+          <h1 class="slider__info--h1">EXPLORE BEYOND HORIZON</h1>
+          <p class="slider__info--p">
+            Magna mundi referrentur quo, no rebun dignissim qui. <br>
+            per quodsi accusata id, agam labores.
+          </p>
+          <button class="btn btn-white">VIEW OUR WORK</button>
+        </div>
+      </section>
+    </header>
+    
+    <section class="section flex flex-column justify-content-center align-items-center">
+      <div class="py-5">
+        <i class="fas fa-th-large order--ico p-rl-1 color-primary pointer"></i>
+        <i class="fas fa-bars order--ico p-rl-1 color-primary pointer"></i>
+      </div>
+      <div class="navbar">
+        <ul class="navbar__ul">
+          <li class="navbar__ul--li"><a id="all" class="li-brand navbar__ul--active" href="#">All</a></li>
+          <li class="navbar__ul--li"><a class="li-brand" id="branding" href="#">Branding</a></li>
+          <li class="navbar__ul--li"><a class="li-brand" id="web" href="#">Web</a></li>
+          <li class="navbar__ul--li"><a class="li-brand" id="photography" href="#">Photography</a></li>
+          <li class="navbar__ul--li"><a class="li-brand" id="app" href="#">App</a></li>
+        </ul>
+      </div>
+      <article class="container py-5" id="box">
+        <!-- Grid -->
+      </article>
+      <button class="btn btn-primary">Show Me More</button>
+    </section>
+
+    <footer class="py-6 flex flex-column justify-content-center align-items-center">
+      <h6 class="copy">© 2016 - <span>Sneak</span> All Right Reserved</h6>
+      <div class="redes">
+        <i class="fab pointer fa-facebook-f"></i>
+        <i class="fab pointer fa-twitter"></i>
+        <i class="fab pointer fa-google-plus-g"></i>
+        <i class="fab pointer fa-youtube"></i>
+      </div>
+    </footer>
+  </main>
+
+  <script type="text/javascript" src="./data.js"></script> 
+  <script>
+    document.getElementById("box").innerHTML = data.map(item => (`
+      <div class="card text-center">
+        <img src="https://images.unsplash.com/photo-${item.photo}?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="${item.name}"></img>
+        <a href="#">
+          <h2 class="workTitle">
+            ${ item.name }
+            <p class="workDescription"> ${ item.type } </p>
+          </h2>
+        </a>
+      </div>`)).join(" ");
+
+      const toggle = document.querySelector('.toggle');
+      const toggleIco = document.querySelector('.toggle > i');
+      toggle.addEventListener('click', () => {
+        const item = document.querySelector('.toggle-menu');
+        (item.classList.contains('active')) ? item.classList.remove("active") : item.classList.add("active");
+        if (item.classList.contains('active')) {
+          toggleIco.classList.remove("fa-bars");
+          toggleIco.classList.add("fa-times");
+        } else {
+          toggleIco.classList.remove("fa-times")
+          toggleIco.classList.add("fa-bars");
+        }
+      });
+
+      document.getElementById("all").addEventListener("click", (event) => {
+        event.preventDefault();
+        document.getElementById("box").innerHTML = data.map(item => (`
+          <div class="card text-center">
+            <img src="https://images.unsplash.com/photo-${item.photo}?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="${item.name}"></img>
+            <a href="#">
+              <h2 class="workTitle">
+                ${ item.name }
+                <p class="workDescription"> ${ item.type } </p>
+              </h2>
+            </a>
+          </div>`)).join(" ");
+      });
+
+      document.getElementById("branding").addEventListener("click", (event) => {
+        event.preventDefault();
+        document.getElementById("box").innerHTML = data.map(item => {
+          if (item.type === 'Branding') {
+            return `<div class="card text-center">
+                      <img src="https://images.unsplash.com/photo-${item.photo}?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="${item.name}"></img>
+                      <a href="#">
+                        <h2 class="workTitle">
+                          ${ item.name }
+                          <p class="workDescription"> ${ item.type } </p>
+                        </h2>
+                      </a>
+                    </div>`;
+          }
+        }).join(" ");
+      });
+
+      document.getElementById("web").addEventListener("click", (event) => {
+        event.preventDefault();
+        document.getElementById("box").innerHTML = data.map(item => {
+          if (item.type === 'Web') {
+            return `<div class="card text-center">
+                      <img src="https://images.unsplash.com/photo-${item.photo}?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="${item.name}"></img>
+                      <a href="#">
+                        <h2 class="workTitle">
+                          ${ item.name }
+                          <p class="workDescription"> ${ item.type } </p>
+                        </h2>
+                      </a>
+                    </div>`;
+          }
+        }).join(" ");
+      });
+
+      document.getElementById("photography").addEventListener("click", (event) => {
+        event.preventDefault();
+        document.getElementById("box").innerHTML = data.map(item => {
+          if (item.type === 'Photography') {
+            return `<div class="card text-center">
+                      <img src="https://images.unsplash.com/photo-${item.photo}?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="${item.name}"></img>
+                      <a href="#">
+                        <h2 class="workTitle">
+                          ${ item.name }
+                          <p class="workDescription"> ${ item.type } </p>
+                        </h2>
+                      </a>
+                    </div>`;
+          }
+        }).join(" ");
+      });
+
+      document.getElementById("app").addEventListener("click", (event) => {
+        event.preventDefault();
+        document.getElementById("box").innerHTML = data.map(item => {
+          if (item.type === 'App') {
+            return `<div class="card text-center">
+                      <img src="https://images.unsplash.com/photo-${item.photo}?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw3fHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="${item.name}"></img>
+                      <a href="#">
+                        <h2 class="workTitle">
+                          ${ item.name }
+                          <p class="workDescription"> ${ item.type } </p>
+                        </h2>
+                      </a>
+                    </div>`;
+          }
+        }).join(" ");
+      });
+  </script>
+</body>
+</html>

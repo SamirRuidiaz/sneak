@@ -1,0 +1,19 @@
+footer {
+  color: var(--light-grey);
+
+  .copy {
+    letter-spacing: 2px;
+    font-size: .7rem;
+
+    span {
+      color: var(--primary);
+    }
+  }
+
+  .redes {
+    i{
+      margin: 0 .7rem;
+      font-size: 15px;
+    }
+  }
+}
